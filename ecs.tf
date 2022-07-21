@@ -5,7 +5,7 @@ resource "alicloud_instance" "devinstance1" {
 
   instance_type              = "ecs.n4.large"
   system_disk_category       = "cloud_efficiency"
-  image_id                   = "ubuntu_22_04_x64_20G_alibase_20220628.vhd"
+  image_id                   = "opensuse_15_4_x64_20G_alibase_20220706.vhd"
   instance_name              = "dev_remote_instance1"
   vswitch_id                 = alicloud_vswitch.vsw.id
   internet_max_bandwidth_out = 10

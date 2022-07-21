@@ -4,13 +4,12 @@
 groups:
   - admingroup: [root,sys]
   - hashicorp
-  - docker
 
 # Add users to the system. Users are added after groups are added.
 users:
   - default
   - name: tf
-    gecos: terraform
+    gecos: terraform user
     shell: /bin/bash
     primary_group: hashicorp
     sudo: ALL=(ALL) NOPASSWD:ALL
@@ -21,10 +20,10 @@ users:
 
 packages:
   - go
+  - docker
 
 runcmd:
   - echo "hello world" > hello1.txt
   - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
   - sudo install minikube-linux-amd64 /usr/local/bin/minikube
-  - curl -fsSL https://get.docker.com -o get-docker.sh
-  - sudo sh get-docker.sh
+  - sudo usermod -aG docker $USER
