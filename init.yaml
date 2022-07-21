@@ -21,14 +21,17 @@ users:
     ssh_authorized_keys:
       - ${public_key}
 
-packages:
-  - golang
-  - docker
-  - kubernetes-client
+# ali linux hangs at yum install -t
+# packages:
+#   - golang
+#   - docker
+#   - kubernetes-client
 
 runcmd:
+  - cd /home/tf
   - echo "hello world" > hello1.txt
   - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-  - sudo install minikube-linux-amd64 /usr/local/bin/minikube
-  - sudo usermod -aG docker $USER
-  - sudo systemctl start docker
+  - install minikube-linux-amd64 /usr/local/bin/minikube
+  - yum install -y golang docker kubernetes-client
+  - usermod -aG docker $USER
+  - systemctl start docker
