@@ -32,6 +32,8 @@ runcmd:
   - echo "hello world" > hello1.txt
   - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
   - install minikube-linux-amd64 /usr/local/bin/minikube
-  - yum install -y golang docker kubernetes-client
+  - yum install -y yum-utils
+  - yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  - yum install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
   - usermod -aG docker $USER
   - systemctl start docker
