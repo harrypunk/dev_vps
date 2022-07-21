@@ -5,6 +5,8 @@ groups:
   - admingroup: [root,sys]
   - hashicorp
 
+package_upgrade: true
+
 # Add users to the system. Users are added after groups are added.
 users:
   - default
@@ -27,3 +29,4 @@ runcmd:
   - curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
   - sudo install minikube-linux-amd64 /usr/local/bin/minikube
   - sudo usermod -aG docker $USER
+  - sudo systemctl start docker
