@@ -4,6 +4,7 @@
 groups:
   - admingroup: [root,sys]
   - hashicorp
+  - docker: [tf]
 
 package_upgrade: true
 
@@ -21,7 +22,7 @@ users:
       - ${public_key}
 
 packages:
-  - go
+  - golang
   - docker
   - kubernetes-client
 
