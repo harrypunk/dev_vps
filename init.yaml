@@ -23,6 +23,7 @@ users:
 packages:
   - go
   - docker
+  - kubernetes-client
 
 runcmd:
   - echo "hello world" > hello1.txt
